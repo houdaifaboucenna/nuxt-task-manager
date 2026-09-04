@@ -16,7 +16,7 @@
             <BoardListItem title="Task 3" />
 
             <!-- Add Task Button -->
-            <AddTask />
+            <BoardAddTask />
         </div>
     </div>
 </template>
