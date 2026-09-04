@@ -7,15 +7,32 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "typecheck": "nuxt typecheck",
+    "db:generate": "bun --env-file=.env ./node_modules/.bin/prisma generate",
+    "db:push": "bun --env-file=.env ./node_modules/.bin/prisma db push",
+    "db:migrate": "bun --env-file=.env ./node_modules/.bin/prisma migrate dev",
+    "db:seed": "bun --env-file=.env ./node_modules/.bin/prisma db seed"
   },
   "dependencies": {
     "@nuxt/eslint": "1.17.0",
     "@nuxt/icon": "2.5.1",
     "@nuxtjs/tailwindcss": "6.14.0",
+    "@libsql/client": "^0.17.4",
+    "@prisma/adapter-libsql": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "dotenv": "^17.4.2",
     "eslint": "^9.0.0 || ^10.0.0",
     "nuxt": "^4.5.2",
     "vue": "^3.5.42",
-    "vue-router": "^5.3.0"
+    "vue-router": "^5.3.1"
+  },
+  "devDependencies": {
+    "@prisma/compute-sdk": "latest",
+    "@types/node": "^26.0.0",
+    "prisma": "^7.8.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3",
+    "vue-tsc": "^3.3.5"
   }
 }

@@ -1,0 +1,30 @@
+import prisma from "../utils/prisma";
+
+export default defineEventHandler(async () => {
+  const users = await prisma.user
+    .findMany({
+      take: 10,
+      orderBy: {
+        createdAt: "desc",
+      },
+    })
+    .then((rows) =>
+      rows.map((user) => ({
+        ...user,
+        createdAt: user.createdAt.toISOString(),
+      }))
+    )
+    .catch((error) => {
+      console.error("Failed to query users:", error);
+      return undefined;
+    });
+
+  if (!users) {
+    return {
+      error: "Could not query users yet.",
+      users: [],
+    };
+  }
+
+  return { users };
+});
