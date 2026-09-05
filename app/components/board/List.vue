@@ -1,6 +1,6 @@
 <template>
     <!-- Board List -->
-    <div class="flex flex-col w-64 h-96 bg-gray-300 rounded-lg p-4">
+    <div class="flex flex-col w-64 h-full min-h-96 bg-gray-300 rounded-lg p-4">
         <!-- Board List Header -->
         <div class="flex justify-between items-center gap-2 mb-5">
             <h3 class="text-lg font-semibold">{{ list?.name }}</h3>
@@ -14,7 +14,7 @@
             <BoardListItem v-for="item in list?.listItems" :item="item" />
 
             <!-- Add Task Button -->
-            <BoardAddTask />
+            <BoardAddTask :list-id="list?.id"/>
         </div>
     </div>
 </template>
