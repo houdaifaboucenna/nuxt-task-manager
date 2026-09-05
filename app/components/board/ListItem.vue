@@ -1,7 +1,7 @@
 <template>
     <!-- List Item -->
     <div class="flex justify-between items-center w-full bg-white rounded-lg p-2 relative">
-        <h3 class="text-lg">{{ title }}</h3>
+        <h3 class="text-lg">{{ item.name }}</h3>
         <!-- delete button -->
         <button @click="deleteTask"
             class="w-5 h-5 rounded-full bg-red-500 text-white flex items-center justify-center text-sm">
@@ -12,12 +12,12 @@
 
 <script setup lang="ts">
 const props = defineProps({
-    title: {
-        type: String,
+    item: {
+        type: Object,
         required: true
     }
 })
 const deleteTask = () => {
-    console.log(props.title);
+    console.log(props.item.name);
 }
 </script>

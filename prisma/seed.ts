@@ -20,6 +20,62 @@ async function main() {
     }),
   ]);
 
+  const lists = await Promise.all([
+    prisma.boardList.upsert({
+      where: { id: 1 },
+      update: { name: "TODO" },
+      create: {
+        name: "TODO",
+        userId: 1
+      },
+    }),
+    prisma.boardList.upsert({
+      where: { id: 2 },
+      update: { name: "IN PROGRESS" },
+      create: {
+        name: "IN PROGRESS",
+        userId: 1,
+      },
+    }),
+    prisma.boardList.upsert({
+      where: { id: 3 },
+      update: { name: "DONE" },
+      create: {
+        name: "DONE",
+        userId: 1,
+      },
+    }),
+  ]);
+
+
+  const items = await Promise.all([
+    prisma.listItem.upsert({
+      where: { id: 1 },
+      update: { name: "Task #1" },
+      create: {
+        name: "Task #1",
+        listId: 1,
+      },
+    }),
+    prisma.listItem.upsert({
+      where: { id: 2 },
+      update: { name: "Task #2" },
+      create: {
+        name: "Task #2",
+        listId: 1,
+      },
+    }),
+    prisma.listItem.upsert({
+      where: { id: 3 },
+      update: { name: "Task #3" },
+      create: {
+        name: "Task #3",
+        listId: 2,
+      },
+    }),
+  ]);
+
+
   console.log(`Seeded ${users.length} users.`);
 }
 
